@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <span>Total clicks: 0</span>
+        <button id= "btn">Click me</button>
+    </body>
+    <script>
+        let counter = 0;
+        const span = document.querySelector("span");
+        const button = document.getElementById("btn");
+        function handleClick(){
+            console.log("i have been clicked");
+            counter = counter + 1;
+            span.innerText = `Total clicks : ${counter}`;
+        }
+        button.addEventListener("click",handleClick);
+    </script>
+</html>
+<!--  
+    `표시 : 문자열 + ${}을 통해 직관화를 살림
+    바닐라 js 작성 방식 
+    1단계 : html 만들기
+    2단계 : 자바스크립트에서 가져오기
+    3단계 : 이벤트를 감지
+    4단계 : 데이터 업데이트(html 포함)
+-->
+
