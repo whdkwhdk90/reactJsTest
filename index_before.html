@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    function App() {
+      const [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        //setCounter(counter + 1);
+        setCounter((current) => current + 1); //current값을 정확히 보장함.
+      };
+      return (
+        <div>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={onClick}>Click me</button>
+        </div>
+      );
+    }
+    ReactDOM.render(<App />, root); //함수 실행마다 리렌더링
+  </script>
+</html>
+<!--
+  //<Title>에서 첫글자는 무조건 대문자 여야 JSX(함수)라고 인식함. 저렇게 쓰면 위에 있는 Title이랑 Button을 가져옴. 대문자로 안쓰면 Html 태그로 인식.
+    //const container = React.createElement("div", null, [title, Button]);
+//ReactDOM.render(Container, root); // render() :  React element를 가지고 html로 만들어 배치하는 것. root 안에 span을 만들어 넣음
+-->
+<!--
+ /* const h3 = React.createElement("h3", {
+                  onMouseEnter : () => console.log("mouse enter")
+          } , "Hello, I'm a span");
+          const btn = React.createElement("button", {
+              onClick : () => console.log('im clicked'),
+              style : {
+                  backgroundColor : "tomato",
+              }
+          },"Click me"); */
+
+-->
+<!--  
+   제일먼저 react.js react-dom.js import하기
+    react는 라이브러리(엔진) 개념, react-dom은 뼈대에 가까움(HTML body에 들 수 있도록 해주는 라이브러리or 패키지)
+    React.createElement("span", {span의 property}, “span의 내용”) 
+
+
+    git config --global user.name => git에 들어갈 username 설정
+    git config --global user.email => git에 들어갈 useremail 설정
+    git remote add origin [ 복사한 저장소 주소 ] =>  원격 저장소 지정
+    git pull origin main --allow-unrelated-histories => 원격 저장소에 있는 내용들을 로컬 저장소에 반영
+    git push -u origin master(브런치 이름. 현재는 마스터로 되어있음) => 로컬저장소에 push한 내용을 원격저장소에 반영
+    
+    non-react : 노드정보가 바뀔때마다 노드트리를 5단계에 걸쳐 처음부터 다시 생성.
+
+    React : 가상dom으로 시야에 보이는 부분만 수정 & 업데이트가 끝나면 모아서 실제 dom으로 전달.
+    프론트엔드는 이 렌더트리 단계를 얼마나 최적화 하느냐가 중요.
+-->
+<!--
+  React JS는 오직 바뀐부분만 업데이트. 바닐라에선 전체를 다시 랜더링함.
+  react는 다른 부분만 확인. 그리고 바뀐 부분에 대해서 가상 DOM으로 우리에게 보여줌.
+  가상DOM으로 보여주기만 바꿔주고 나중에 데이터 저장시에 실제 DOM에 저장.
+
+-->
